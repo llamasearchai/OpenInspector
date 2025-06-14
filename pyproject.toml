@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "openinspector"
+version = "0.1.0"
+description = "OpenInspector – a production-grade account-abuse and fraud-detection framework with OpenAI Agents, FastAPI endpoints, and LangChain/LangGraph/LangSmith integration."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+  { name = "Nik Jois", email = "nikjois@llamasearch.ai" }
+]
+keywords = ["fraud", "abuse", "security", "openai", "langchain", "agents", "fastapi", "detection"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Framework :: FastAPI",
+  "Topic :: Security",
+  "Intended Audience :: Developers"
+]
+
+[project.urls]
+Homepage = "https://github.com/llamasearchai/OpenInspector"
+Documentation = "https://github.com/llamasearchai/OpenInspector#readme"
+Issues = "https://github.com/llamasearchai/OpenInspector/issues"
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-asyncio",
+    "black",
+    "isort",
+    "ruff",
+]
+
+docs = [
+    "mkdocs-material",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+exclude = ["tests*", "examples*"]
+
+[project.dependencies]
+fastapi = ">=0.110.0"
+uvicorn = {extras = ["standard"], version = ">=0.29.0"}
+openai = ">=1.23.0"
+langchain = ">=0.1.13"
+langgraph = ">=0.0.18"
+langsmith = ">=0.0.70"
+pydantic = ">=2.6.4"
+SQLAlchemy = ">=2.0"
+python-dotenv = ">=1.0.1"
+httpx = "*"
+aiosqlite = "*"
+prometheus-client = "*"
+langflow = "*"
+
+[project.scripts]
+openinspector = "openinspector.api:run" 
